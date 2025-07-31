@@ -18,13 +18,5 @@ export class Executor {
     })
 
     logger.info(`Child process PID: ${childProcess.pid}`)
-    // 验证进程是否启动成功
-    childProcess.on('spawn', () => {
-      logger.info('Child process spawned')
-    })
-
-    childProcess.on('error', (error) => {
-      logger.error(`Child process error: ${error}`)
-    })
   }
 }
