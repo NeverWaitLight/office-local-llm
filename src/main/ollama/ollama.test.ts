@@ -51,7 +51,8 @@ describe('OllamaChat', () => {
         content: '这是一个测试回复'
       }
     }
-    ;(Ollama.chat as any).mockResolvedValue(mockResponse)
+    // @ts-ignore - 使用mock绕过类型检查
+    Ollama.chat.mockResolvedValue(mockResponse)
 
     const response = await ollamaChat.chat('测试问题', '系统提示')
 
@@ -69,7 +70,7 @@ describe('OllamaChat', () => {
   test('setModel应更新模型名称', async () => {
     // 准备模拟返回值
     const mockResponse = { message: { content: '测试回复' } }
-    // @ts-ignore - 使用any类型绕过类型检查
+    // @ts-ignore - 使用mock绕过类型检查
     Ollama.chat.mockResolvedValue(mockResponse)
 
     ollamaChat.setModel('newmodel')
